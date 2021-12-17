@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WishList.Data;
@@ -16,7 +15,7 @@ namespace WishList
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<IdentityDbContext<ApplicationUser>>(options => options.UseInMemoryDatabase("Wishlist"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("Wishlist"));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
         }
 
